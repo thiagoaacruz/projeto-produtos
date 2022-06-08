@@ -1,0 +1,41 @@
+<h5>Consulta de Produtos</h5>
+<p>Listagem de produto de cadastrados</p>
+
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <td>Nome do produto</td>
+            <td>Preço</td>
+            <td>Quantidade</td>
+            <td>Total</td>
+            <td>Descrição</td>
+            <td>Operações</td>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of produtos">
+          <td>{{p.nome}}</td>
+          <td>{{p.preco}}</td>
+          <td>{{p.quantidade}}</td>
+          <td>{{p.total}}</td>
+          <td>{{p.descricao}}</td>
+          <td>
+            <button class="btn btn-sm btn-primary mr"
+            [routerLink]="['/editar-produtos',p.idProduto]">
+              Editar
+            </button>
+
+              &nbsp;
+
+            <button class="btn btn-sm btn-danger" (click)="excluir(p.idProduto)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">Total de registros: {{produtos.length}}  </td>
+        </tr>
+    </tfoot>
+</table>
